@@ -1,0 +1,13 @@
+diff --git a/etc/keystone.conf.sample b/etc/keystone.conf.sample
+index 66a7c44..22deb44 100644
+--- a/etc/keystone.conf.sample
++++ b/etc/keystone.conf.sample
+@@ -611,6 +611,7 @@
+ # Deprecated group/name - [DATABASE]/sql_connection
+ # Deprecated group/name - [sql]/connection
+ #connection=<None>
++connection = sqlite:////var/lib/keystone/keystone.db
+ 
+ # The SQL mode to be used for MySQL sessions. This option,
+ # including the default, overrides any server-set SQL mode. To
+

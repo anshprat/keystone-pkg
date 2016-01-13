@@ -1,0 +1,18 @@
+#!/bin/bash
+#------------------------
+# Testing keystone-daemon
+#------------------------
+set -e
+
+# first copy the keystone-paste.ini file
+cp `dirname $0`/keystone-paste.ini /etc/keystone/
+
+DAEMONS=('keystone-all')
+
+service keystone restart > /dev/null
+if pidof -x keystone-all > /dev/null; then
+    echo "OK"
+else
+    echo "ERROR: ${daemon} IS NOT RUNNING"
+    exit 1
+fi

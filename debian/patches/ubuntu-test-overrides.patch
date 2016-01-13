@@ -1,0 +1,27 @@
+From af7abb1c79398ca9b2eaf347a589a1d3dbabb35b Mon Sep 17 00:00:00 2001
+From: Chuck Short <chuck.short@canonical.com>
+Date: Tue, 25 Mar 2014 09:03:52 -0400
+Subject: [PATCH] patch
+
+Signed-off-by: Chuck Short <chuck.short@canonical.com>
+---
+ keystone/tests/config_files/deprecated_override.conf | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/keystone/tests/config_files/deprecated_override.conf b/keystone/tests/config_files/deprecated_override.conf
+index 1d1c926..7dd9a4c 100644
+--- a/keystone/tests/config_files/deprecated_override.conf
++++ b/keystone/tests/config_files/deprecated_override.conf
+@@ -13,3 +13,9 @@ idle_timeout = 54321
+ 
+ connection = sqlite://new
+ idle_timeout = 65432
++
++[policy]
++driver = keystone.policy.backends.rules.Policy
++
++[ec2]
++driver = keystone.contrib.ec2.backends.kvs.Ec2
+-- 
+1.9.1
+

@@ -1,0 +1,3 @@
+Tests: python-keystone keystone-daemon
+Depends: python-keystone, keystone
+Restrictions: needs-root

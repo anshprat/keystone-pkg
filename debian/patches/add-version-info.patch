@@ -1,0 +1,45 @@
+Description: Add version info for Ubuntu.
+Author: Yolanda Robla <yolanda.robla@canonical.com>
+Forwarded: Not-needed
+--- a/etc/keystone.conf.sample
++++ b/etc/keystone.conf.sample
+@@ -1335,3 +1335,5 @@
+ #driver=keystone.trust.backends.sql.Trust
+ 
+ 
++[extra_headers]
++Distribution = Ubuntu
+--- a/keystone/common/config.py
++++ b/keystone/common/config.py
+@@ -12,6 +12,8 @@
+ # License for the specific language governing permissions and limitations
+ # under the License.
+ 
++import platform
++
+ from oslo.config import cfg
+ 
+ 
+@@ -651,6 +653,8 @@
+                          'this list. It will give users with permission to '
+                          'create endpoints the ability to see those values '
+                          'in your configuration file.')],
++    'extra_headers': [
++        cfg.StrOpt('Distribution', default=platform.dist()[0])],
+     'kvs': [
+         cfg.ListOpt('backends', default=[],
+                     help='Extra dogpile.cache backend modules to register '
+--- a/keystone/common/wsgi.py
++++ b/keystone/common/wsgi.py
+@@ -588,6 +588,11 @@
+     headers = headers or []
+     headers.append(('Vary', 'X-Auth-Token'))
+ 
++    # extra headers
++    for key, value in CONF.extra_headers.items():
++        if value != 'None':
++            headers.append(('X-'+key, value))
++
+     if body is None:
+         body = ''
+         status = status or (204, 'No Content')

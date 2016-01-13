@@ -1,0 +1,14 @@
+Description: Set min version of six.
+Author: Corey Bryant <corey.bryant@canonical.com>
+Forwarded: Not needed.
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -7,7 +7,7 @@
+ PasteDeploy>=1.5.0,<=1.5.2
+ Paste
+ Routes>=1.12.3,!=2.0
+-six>=1.6.0,<=1.9.0
++six>=1.5.2,<=1.9.0
+ SQLAlchemy>=0.7.8,!=0.9.5,<=0.9.99
+ sqlalchemy-migrate>=0.8.2,!=0.8.4,<=0.9.1
+ passlib

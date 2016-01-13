@@ -1,0 +1,138 @@
+Source: keystone
+Section: net
+Priority: extra
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Monty Taylor <mordred@inaugust.com>
+Uploaders: Soren Hansen <soren@ubuntu.com>
+Build-Depends:
+ debhelper (>= 7.0.50),
+ po-debconf,
+ python-all (>= 2.6),
+ python-babel,
+ python-crypto,
+ python-dogpile.cache (>= 0.5.0),
+ python-eventlet,
+ python-greenlet,
+ python-iso8601,
+ python-jsonschema,
+ python-keystoneclient (>= 1:0.4.0),
+ python-kombu (>= 2.4.8),
+ python-ldap,
+ python-lockfile,
+ python-lxml,
+ python-memcache,
+ python-migrate,
+ python-mock,
+ python-mox,
+ python-netaddr,
+ python-netifaces,
+ python-oauthlib,
+ python-oslo.config (>= 1:1.2.0),
+ python-oslo.messaging,
+ python-oslosphinx,
+ python-oslotest,
+ python-pam (>= 0.1.4),
+ python-passlib,
+ python-paste,
+ python-pastedeploy,
+ python-pbr (>= 0.5),
+ python-pecan,
+ python-pycadf,
+ python-pymongo,
+ python-requests (>= 1.0.0),
+ python-routes,
+ python-setuptools,
+ python-six (>= 1.5.2),
+ python-sphinx,
+ python-sqlalchemy (>= 0.8.2),
+ python-testtools (>= 0.9.32),
+ python-webob (>= 1.0.8),
+ python-webtest,
+ python-wsme,
+ subunit,
+ testrepository
+Standards-Version: 3.9.3
+XS-Python-Version: >= 2.6
+Homepage: http://launchpad.net/keystone
+Vcs-Browser: http://bazaar.launchpad.net/~ubuntu-server-dev/keystone/icehouse/files
+Vcs-Bzr: https://code.launchpad.net/~ubuntu-server-dev/keystone/icehouse
+XS-Testsuite: autopkgtest
+
+Package: python-keystone
+Architecture: all
+Section: python
+Depends:
+ python-babel,
+ python-dogpile.cache(>= 0.5.0),
+ python-eventlet,
+ python-greenlet,
+ python-iso8601,
+ python-keystoneclient (>= 1:0.3.0),
+ python-kombu (>= 2.4.8),
+ python-ldap,
+ python-lockfile,
+ python-lxml,
+ python-migrate,
+ python-netaddr,
+ python-oslo.config (>= 1:1.2.0a3),
+ python-pam (>= 0.1.4),
+ python-passlib,
+ python-paste,
+ python-pastedeploy,
+ python-routes,
+ python-six (>= 1.5.2),
+ python-sqlalchemy (>= 0.8.2),
+ python-webob (>= 1.0.8),
+ ${misc:Depends},
+ ${python:Depends}
+Suggests: python-memcache
+Provides: ${python:Provides}
+XB-Python-Version: ${python:Versions}
+Description: OpenStack identity service - Python library
+ Keystone is a proposed independent authentication service for OpenStack.
+ .
+ This initial proof of concept aims to address the current use cases in Swift
+ and Nova which are:
+ .
+  * REST-based, token auth for Swift
+  * many-to-many relationship between identity and tenant for Nova. Keystone
+    does authentication and stuff
+ .
+ This package contains the Python libraries.
+
+Package: keystone
+Architecture: all
+Section: python
+Depends:
+ adduser,
+ python-keystone (= ${source:Version}),
+ ssl-cert (>= 1.0.12),
+ ${misc:Depends},
+ ${python:Depends}
+Description: OpenStack identity service - Daemons
+ Keystone is a proposed independent authentication service for OpenStack.
+ .
+ This initial proof of concept aims to address the current use cases in Swift
+ and Nova which are:
+ .
+  * REST-based, token auth for Swift
+  * many-to-many relationship between identity and tenant for Nova. Keystone
+    does authentication and stuff
+ .
+ This package contains the daemons.
+
+Package: keystone-doc
+Architecture: all
+Section: doc
+Depends: libjs-jquery, ${misc:Depends}
+Description: OpenStack identity service - Documentation
+ Keystone is a proposed independent authentication service for OpenStack.
+ .
+ This initial proof of concept aims to address the current use cases in Swift
+ and Nova which are:
+ .
+  * REST-based, token auth for Swift
+  * many-to-many relationship between identity and tenant for Nova. Keystone
+    does authentication and stuff
+ .
+ This package contains the documentation.
